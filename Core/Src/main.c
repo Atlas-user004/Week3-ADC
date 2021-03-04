@@ -68,7 +68,8 @@ void ADCPollingMethodUpdate(); // Read ADC From 3 Source(In0,In1,Temp)
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint32_t ADCOutputConverted = 0;
+//uint32_t ADCOutputConverted = 0;
+float ADCOutputConverted = 0.0;
 uint8_t ADCMode = 0;
 
 GPIO_PinState SwitchMode[2]; // [Now,Last]
@@ -139,7 +140,7 @@ int main(void)
 		}
 		if(ADCMode == 1)
 		{
-			ADCOutputConverted = (((ADCChannel[1].Data*3300/4096)-760)*10/25)+25;
+			ADCOutputConverted = (((ADCChannel[1].Data*3300/4096)-760)/2.5)+25;
 		}
 		else
 		{
